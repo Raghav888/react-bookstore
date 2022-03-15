@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./navbar.css"
 export function Navbar(){
     return(
         
@@ -36,7 +36,7 @@ export function Navbar(){
           <span className="mantra-count">1</span>
                 </span>
 
-                <span className="mantra-cart-button">Cart</span>
+                <span className="mantra-cart-button cart-button">Cart</span>
             </a>
         </div>
     </div>
