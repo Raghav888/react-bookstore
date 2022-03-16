@@ -1,8 +1,8 @@
 import React from "react";
 import { useCategory } from "../../context/category-context";
-import "./CategoryBaner.css";
+import "./CategoryBanner.css";
 
-export function CategoryBaner() {
+export function CategoryBanner() {
   const { category } = useCategory();
 
   return (

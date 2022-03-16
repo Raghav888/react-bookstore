@@ -1,6 +1,6 @@
 import React from "react";
 import { Bestseller } from "../../components/bestsellerbanner/Bestseller";
-import { CategoryBaner } from "../../components/categorybanner/CategoryBanner";
+import { CategoryBanner } from "../../components/categorybanner/CategoryBanner";
 import { ScrollFooter } from "../../components/shared/footer/Scrollfooter";
 import { Navbar } from "../../components/shared/navbar/Navbar";
 
@@ -9,7 +9,7 @@ export function Home() {
   return (
     <div>
       <Navbar />
-      <CategoryBaner />
+      <CategoryBanner />
       <Bestseller />
       <ScrollFooter />
     </div>
