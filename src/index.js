@@ -5,17 +5,20 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import { CategoryProvider } from "./context/category-context";
+import { ProductProvider } from "./context/product-listing-context";
 
 // Call make Server
 makeServer();
 
-ReactDOM.render( 
-    <React.StrictMode>
+ReactDOM.render(
+  <React.StrictMode>
     <BrowserRouter>
-    <CategoryProvider>
-    <App />
-    </CategoryProvider>
-    </BrowserRouter> 
-    </React.StrictMode>,
-    document.getElementById("root")
+      <ProductProvider>
+        <CategoryProvider>
+          <App />
+        </CategoryProvider>
+      </ProductProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
