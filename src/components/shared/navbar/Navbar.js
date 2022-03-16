@@ -5,8 +5,7 @@ export function Navbar() {
     <nav className="mantra-nav">
       <div className="mantra-nav-title">
         <a className="mantra-title" href="index.html">
-          {" "}
-          BookStore{" "}
+          BookStore
         </a>
       </div>
       <div className="mantra-nav-search">

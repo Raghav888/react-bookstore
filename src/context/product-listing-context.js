@@ -17,7 +17,7 @@ const ProductProvider = ({ children }) => {
       try {
         const response = await axios.get(api);
         productListdispatch({
-          type: "STATE_UPDATE",
+          type: "ADD_PRODUCT_LIST",
           payload: { value: response.data.products },
         });
       } catch (error) {
