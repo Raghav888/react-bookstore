@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 export function Navbar() {
   return (
@@ -20,11 +21,11 @@ export function Navbar() {
       </div>
 
       <div className="mantra-nav-footer">
-        <a href="./Html/login.html">
+        <Link to="/login">
           <button className="mantra-button mantra-primary-btn mantra-login-btn">
             Login
           </button>
-        </a>
+        </Link>
 
         <div className="mantra-badge">
           <a className="mantra-menu-icon" href="./Html/wishlist.html">
