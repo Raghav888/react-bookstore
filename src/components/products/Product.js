@@ -21,6 +21,10 @@ export const Products = () => {
           }) => {
             return (
               <div className="mantra-vertical-card card-holder">
+                <div class="mantra-icon mantra-close-icon">
+                  <i class="fas fa-heart-circle"></i>
+                  {/* <i class="fas fa-heart-circle" id="wishlist"></i> */}
+                </div>
                 <div className="mantra-icon mantra-close-icon">
                   <i claclassNamess="fas fa-heart-circle" id="wishlist"></i>
                 </div>
