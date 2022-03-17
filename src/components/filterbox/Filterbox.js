@@ -1,6 +1,13 @@
 import React from "react";
 import { useCategory } from "../../context/category-context";
 import "./filterbox.css";
+
+const ratingData = [
+  { rating: 4, ratingName: "4 Stars & above" },
+  { rating: 3, ratingName: "3 Stars & above" },
+  { rating: 2, ratingName: "2 Stars & above" },
+  { rating: 1, ratingName: "1 Stars & above" },
+];
 export const Filterbox = () => {
   const { category } = useCategory();
   return (
@@ -55,30 +62,16 @@ export const Filterbox = () => {
             <h3>Ratings</h3>
           </div>
           <div className="category-sub">
-            <div className="rating-filter">
-              <input type="radio" id="star4" name="star" />
-              <label className="label-box" for="star4">
-                4 Stars & above
-              </label>
-            </div>
-            <div className="rating-filter">
-              <input type="radio" id="star3" name="star" />
-              <label className="label-box" for="star3">
-                3 Stars & above
-              </label>
-            </div>
-            <div className="rating-filter">
-              <input type="radio" id="star2" name="star" />
-              <label className="label-box" for="star2">
-                2 Stars & above
-              </label>
-            </div>
-            <div className="rating-filter">
-              <input type="radio" id="star1" name="star" />
-              <label className="label-box" for="star1">
-                1 Stars & above
-              </label>
-            </div>
+            {ratingData.map((item) => {
+              return (
+                <div key={item.rating} className="rating-filter">
+                  <input type="radio" id={item.ratingName} name="star" />
+                  <label className="label-box" for={item.ratingName}>
+                    {item.ratingName}
+                  </label>
+                </div>
+              );
+            })}
           </div>
 
           {/* <!-- Sort by price --> */}
