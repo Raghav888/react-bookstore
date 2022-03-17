@@ -7,7 +7,7 @@ import { Navbar } from "../../components/shared/navbar/Navbar";
 import "./home.css";
 export function Home() {
   return (
-    <div>
+    <div className="Home-head">
       <Navbar />
       <CategoryBanner />
       <Bestseller />
