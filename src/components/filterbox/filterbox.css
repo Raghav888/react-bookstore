@@ -1,9 +1,8 @@
 .filter-main {
     text-align: left;
-}
-
-.main-box {
-    display: flex;
+    position: fixed;
+    left: 0;
+    top: 8rem;
 }
 
 .side-bar {
