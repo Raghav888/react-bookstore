@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useCategory } from "../../context/category-context";
 import "./CategoryBanner.css";
 
@@ -24,13 +25,13 @@ export function CategoryBanner() {
         })}
       </div>
       <div className="baner">
-        <a href="##">
+        <Link to="/productlist">
           <img
             className="baner-image"
             src="./assets/baner.png"
             alt="baner-book"
           />
-        </a>
+        </Link>
       </div>
     </div>
   );
