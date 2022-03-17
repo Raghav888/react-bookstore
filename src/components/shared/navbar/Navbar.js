@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.css";
 export function Navbar() {
   return (
-    <nav className="mantra-nav">
+    <nav className="mantra-nav head-nav">
       <div className="mantra-nav-title">
         <a className="mantra-title" href="index.html">
           BookStore

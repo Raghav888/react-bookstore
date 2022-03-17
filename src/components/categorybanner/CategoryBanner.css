@@ -1,9 +1,8 @@
 .product-line {
-    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    margin: 5rem 6rem 2rem 6rem;
+    margin: 8rem 6rem 2rem 6rem;
 }
 
 .display-image {
