@@ -27,8 +27,8 @@ export const Filterbox = () => {
                 return (
                   <div key={item.id}>
                     <div className="book-filter">
-                      <input type="checkbox" id="love" />
-                      <label className="label-box" for="love">
+                      <input type="checkbox" id={item.id} />
+                      <label className="label-box" for={item.id}>
                         {item.categoryName}
                       </label>
                     </div>
