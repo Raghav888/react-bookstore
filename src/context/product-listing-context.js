@@ -1,6 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { useReducer, createContext, useContext, useEffect } from "react";
+import {
+  compose,
+  dataSortbyPrice,
+  dataSortbyRating,
+  filterDatabyPrice,
+} from "../utils/productFilterSort";
 import { productListReducer } from "../utils/productListReducer";
 
 const ProductContext = createContext([]);
@@ -9,9 +15,15 @@ const api = "/api/products";
 const ProductProvider = ({ children }) => {
   const [productListstate, productListdispatch] = useReducer(
     productListReducer,
-    { productList: [] }
+    {
+      productList: [],
+      minPrice: 0,
+      maxPrice: 9999,
+      sortbyPrice: null,
+      ratingsort: 1,
+    }
   );
-  console.log(productListstate.productList);
+
   useEffect(() => {
     (async () => {
       try {
@@ -26,8 +38,18 @@ const ProductProvider = ({ children }) => {
     })();
   }, []);
 
+  const filterDataPrice = compose(
+    productListstate,
+    dataSortbyPrice,
+    filterDatabyPrice,
+    dataSortbyRating
+  );
+
+  console.log(filterDataPrice);
   return (
-    <ProductContext.Provider value={{ productListstate }}>
+    <ProductContext.Provider
+      value={{ filterDataPrice, productListdispatch, productListstate }}
+    >
       {children}
     </ProductContext.Provider>
   );
