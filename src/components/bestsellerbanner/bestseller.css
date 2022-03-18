@@ -9,9 +9,13 @@
     margin-top: 2rem;
 }
 
+.best-book {
+    height: 20rem;
+}
+
 .sub-head,
 .description {
-    padding-top: 2rem;
+    padding-top: 1rem;
     font-size: 1.5rem;
 }
 
