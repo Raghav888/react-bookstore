@@ -4,6 +4,7 @@ import "./bestseller.css";
 
 export function Bestseller() {
   const { productListstate } = useProductList();
+
   const productList = productListstate.productList.slice(0, 2);
 
   return (

@@ -22,7 +22,7 @@ export const Products = () => {
             rating,
           }) => {
             return (
-              <div className="mantra-vertical-card card-holder">
+              <div key={_id} className="mantra-vertical-card card-holder">
                 <div className="mantra-icon mantra-close-icon">
                   <i className="fas fa-heart-circle icon-size"></i>
                   {/* <i class="fas fa-heart-circle" id="wishlist"></i> */}

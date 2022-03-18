@@ -18,7 +18,16 @@ export const Filterbox = () => {
       <div className="side-bar">
         <div className="filter-title">
           <h3 className="mantra-title">Filter</h3>
-          <div className="clear-filter mantra-title">Clear</div>
+          <div
+            className="clear-filter mantra-title"
+            onClick={() =>
+              productListdispatch({
+                type: "CLEAR_FILTER",
+              })
+            }
+          >
+            Clear
+          </div>
         </div>
         <div className="category-head ">
           <h3 className="mantra-title">Category</h3>
@@ -29,7 +38,19 @@ export const Filterbox = () => {
               return (
                 <div key={item.id}>
                   <div className="book-filter">
-                    <input type="checkbox" id={item.id} />
+                    <input
+                      type="checkbox"
+                      id={item.id}
+                      checked={productListstate.categoryFilter.includes(
+                        item.categoryName
+                      )}
+                      onClick={() =>
+                        productListdispatch({
+                          type: "CATEGORY_FILTER",
+                          payload: { value: item.categoryName },
+                        })
+                      }
+                    />
                     <label className="label-box item-font" htmlFor={item.id}>
                       {item.categoryName}
                     </label>

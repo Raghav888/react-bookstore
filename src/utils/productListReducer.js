@@ -21,6 +21,31 @@ export const productListReducer = (state, action) => {
       return { ...state, minPrice: action.payload.value };
     case "RATING":
       return { ...state, ratingsort: action.payload.value };
+    case "CLEAR_FILTER":
+      return {
+        ...state,
+        minPrice: 0,
+        maxPrice: 9999,
+        sortbyPrice: null,
+        ratingsort: 1,
+        categoryFilter: [],
+      };
+    case "CATEGORY_FILTER":
+      const isAdded = state.categoryFilter.find(
+        (item) => item === action.payload.value
+      );
+      if (isAdded === undefined) {
+        return {
+          ...state,
+          categoryFilter: [...state.categoryFilter, action.payload.value],
+        };
+      } else {
+        const newCategory = state.categoryFilter.filter(
+          (item) => item !== action.payload.value
+        );
+        return { ...state, categoryFilter: newCategory };
+      }
+
     default:
       return state;
   }

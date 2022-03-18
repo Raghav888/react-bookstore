@@ -21,6 +21,15 @@ const dataSortbyRating = ({ ratingsort }, productData) => {
   return productData.filter((item) => item.rating >= ratingsort);
 };
 
+const dataFilterbyCategory = ({ categoryFilter }, productData) => {
+  if (categoryFilter.length >= 1) {
+    const categoryFiltereddata = productData.filter(
+      (product) => categoryFilter.indexOf(product.categoryName) !== -1
+    );
+    return categoryFiltereddata;
+  }
+  return productData;
+};
 const compose = (state, ...args) => {
   const output = args.reduce((acc, curr) => {
     acc = curr(state, acc);
@@ -30,4 +39,10 @@ const compose = (state, ...args) => {
   return output;
 };
 
-export { filterDatabyPrice, compose, dataSortbyPrice, dataSortbyRating };
+export {
+  filterDatabyPrice,
+  compose,
+  dataSortbyPrice,
+  dataSortbyRating,
+  dataFilterbyCategory,
+};

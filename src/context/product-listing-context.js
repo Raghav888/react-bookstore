@@ -3,6 +3,7 @@ import React from "react";
 import { useReducer, createContext, useContext, useEffect } from "react";
 import {
   compose,
+  dataFilterbyCategory,
   dataSortbyPrice,
   dataSortbyRating,
   filterDatabyPrice,
@@ -21,6 +22,7 @@ const ProductProvider = ({ children }) => {
       maxPrice: 9999,
       sortbyPrice: null,
       ratingsort: 1,
+      categoryFilter: [],
     }
   );
 
@@ -42,10 +44,10 @@ const ProductProvider = ({ children }) => {
     productListstate,
     dataSortbyPrice,
     filterDatabyPrice,
-    dataSortbyRating
+    dataSortbyRating,
+    dataFilterbyCategory
   );
 
-  console.log(filterDataPrice);
   return (
     <ProductContext.Provider
       value={{ filterDataPrice, productListdispatch, productListstate }}
