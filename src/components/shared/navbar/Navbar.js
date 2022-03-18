@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import "./navbar.css";
 export function Navbar() {
   return (
-    <nav className="mantra-nav head-nav">
+    <nav className="mantra-nav head-nav nav-main">
       <div className="mantra-nav-title">
-        <a className="mantra-title" href="index.html">
+        <Link className="mantra-title" to="/">
           BookStore
-        </a>
+        </Link>
       </div>
       <div className="mantra-nav-search">
         <input

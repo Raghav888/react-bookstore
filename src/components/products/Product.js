@@ -1,12 +1,13 @@
 import { useProductList } from "../../context/product-listing-context";
 import React from "react";
 import "./product.css";
+
 export const Products = () => {
   const { productListstate } = useProductList();
   return (
     <div className="product-page">
       <div className="product-page-title">
-        <h3>Showing All Products</h3>
+        <h3 className="item-font">Showing Products</h3>
       </div>
       {/* <!-- Listing --> */}
       <div className="book-card-holder">
@@ -22,12 +23,10 @@ export const Products = () => {
             return (
               <div className="mantra-vertical-card card-holder">
                 <div class="mantra-icon mantra-close-icon">
-                  <i class="fas fa-heart-circle"></i>
+                  <i class="fas fa-heart-circle icon-size"></i>
                   {/* <i class="fas fa-heart-circle" id="wishlist"></i> */}
                 </div>
-                <div className="mantra-icon mantra-close-icon">
-                  <i claclassNamess="fas fa-heart-circle" id="wishlist"></i>
-                </div>
+
                 <div className="mantra-card-holder-image-v">
                   <img
                     className="mantra-vert-image image-cover"
@@ -37,8 +36,8 @@ export const Products = () => {
                 </div>
                 <div className="mantra-card-holder-text-vert">
                   <div className="mantra-card-holder-text-content">
-                    <h2>{title}</h2>
-                    <h3>{author}</h3>
+                    <h2 className="item-font">{title}</h2>
+                    <h3 className="item-font">{author}</h3>
                     <div className="mantra-price-box">
                       <span className="mantra-discount">
                         Rs.{discountprice}

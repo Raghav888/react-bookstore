@@ -1,26 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./loginform.css";
 
 export const LoginForm = () => {
   return (
     <div className="login-main-box">
-      <div class="login-box">
-        <div class="login-title">
-          <h3>Login</h3>
+      <div className="login-box">
+        <div className="login-title">
+          <h3 className="item-font">Login</h3>
         </div>
-        <form class="login-form" action="submit">
-          <div class="login-input">
-            <label for="email">Email Id: </label>
+        <form className="login-form" action="submit">
+          <div className="login-input">
+            <label className="item-font" for="email">
+              Email Id:
+            </label>
             <input
               id="email"
-              class="text-box text-box-email mantra-textbox-classic mantra-highlight-box"
+              className="text-box text-box-email mantra-textbox-classic mantra-highlight-box"
               type="email"
               placeholder=" xyz@email.com "
               required
             />
           </div>
-          <div class="login-input">
-            <label for="password">Password: </label>
+          <div className="login-input">
+            <label className="item-font" for="password">
+              Password:
+            </label>
             <input
               id="password"
               class="text-box mantra-textbox-classic mantra-highlight-box"
@@ -29,16 +34,20 @@ export const LoginForm = () => {
               required
             />
           </div>
-          <div class="login-input-box">
+          <div className="login-input-box">
             <input type="checkbox" id="remember-me" />
-            <label for="remember-me"> Remember me</label>
-            <div className="forgot-password"> Forgot password</div>
+            <label for="remember-me" className="item-font">
+              Remember me
+            </label>
+            <div className="forgot-password item-font"> Forgot password</div>
           </div>
-          <button class="mantra-button mantra-primary-btn login-button">
+          <button className="mantra-button mantra-primary-btn login-button">
             Login
           </button>
-          <div class="login-input new-account">
-            <a href="signup.html">Create New Account</a>
+          <div className="login-input new-account">
+            <Link to="/signup" className="item-font">
+              Create New Account
+            </Link>
           </div>
         </form>
       </div>

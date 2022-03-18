@@ -13,7 +13,7 @@ export function Bestseller() {
           return (
             <div key={_id}>
               <div className="book-card">
-                <div className="mantra-card-holder">
+                <div className="mantra-card-holder best-book">
                   <div className="mantra-card-holder-image">
                     <img
                       className="mantra-card-image"
@@ -23,7 +23,7 @@ export function Bestseller() {
                   </div>
 
                   <div className="mantra-card-holder-text text-box">
-                    <h2>{title}</h2>
+                    <h2 className="sub-head">{title}</h2>
                     <div>
                       <h4 className="sub-head">{author}</h4>
                       <p className="description">{productDescription}</p>

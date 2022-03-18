@@ -14,11 +14,11 @@ export const Filterbox = () => {
     <div className="filter-main">
       <div className="side-bar">
         <div className="filter-title">
-          <h3>Filter</h3>
-          <div className="clear-filter">Clear</div>
+          <h3 className="mantra-title">Filter</h3>
+          <div className="clear-filter mantra-title">Clear</div>
         </div>
-        <div className="category-head">
-          <h3>Category</h3>
+        <div className="category-head ">
+          <h3 className="mantra-title">Category</h3>
         </div>
         <div className="category-sub">
           <form>
@@ -27,7 +27,7 @@ export const Filterbox = () => {
                 <div key={item.id}>
                   <div className="book-filter">
                     <input type="checkbox" id={item.id} />
-                    <label className="label-box" for={item.id}>
+                    <label className="label-box item-font" for={item.id}>
                       {item.categoryName}
                     </label>
                   </div>
@@ -38,11 +38,11 @@ export const Filterbox = () => {
         </div>
         {/* <!-- Price --> */}
         <div className="category-head">
-          <h3>Price</h3>
+          <h3 className="mantra-title">Price</h3>
         </div>
         <div className="min-max">
-          <small>Min</small>
-          <small>Max</small>
+          <small className="mantra-title">Min</small>
+          <small className="mantra-title">Max</small>
         </div>
         <div className="input-box">
           <input
@@ -58,14 +58,14 @@ export const Filterbox = () => {
 
         {/* <!-- Filter by Rating --> */}
         <div className="category-head">
-          <h3>Ratings</h3>
+          <h3 className="mantra-title">Ratings</h3>
         </div>
         <div className="category-sub">
           {ratingData.map((item) => {
             return (
               <div key={item.rating} className="rating-filter">
                 <input type="radio" id={item.ratingName} name="star" />
-                <label className="label-box" for={item.ratingName}>
+                <label className="label-box item-font" for={item.ratingName}>
                   {item.ratingName}
                 </label>
               </div>
@@ -75,19 +75,19 @@ export const Filterbox = () => {
 
         {/* <!-- Sort by price --> */}
         <div className="category-head">
-          <h3>Sort by</h3>
+          <h3 className="mantra-title">Sort by</h3>
         </div>
 
         <div className="category-sub">
           <div className="price-sort">
             <input type="radio" id="sort-high" name="sort" />
-            <label className="label-box" for="sort-high">
+            <label className="label-box item-font" for="sort-high">
               Price: Low to High
             </label>
           </div>
           <div className="price-sort">
             <input type="radio" id="sort-low" name="sort" />
-            <label className="label-box" for="sort-low">
+            <label className="label-box item-font" for="sort-low">
               Price: High to Low
             </label>
           </div>
