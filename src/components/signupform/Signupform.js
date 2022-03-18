@@ -10,7 +10,7 @@ export const Signupform = () => {
         </div>
         <form className="signup-form" action="submit">
           <div className="signup-input">
-            <label for="name" className="item-font">
+            <label htmlFor="name" className="item-font">
               First Name:
             </label>
           </div>
@@ -24,8 +24,8 @@ export const Signupform = () => {
             />
           </div>
           <div className="signup-input">
-            <label for="last" className="item-font">
-              Last Name:{" "}
+            <label htmlFor="last" className="item-font">
+              Last Name:
             </label>
           </div>
           <div className="signup-input-box">
@@ -38,8 +38,8 @@ export const Signupform = () => {
             />
           </div>
           <div className="signup-input">
-            <label for="email" className="item-font">
-              Email Id:{" "}
+            <label htmlFor="email" className="item-font">
+              Email Id:
             </label>
           </div>
           <div className="signup-input-box">
@@ -52,8 +52,8 @@ export const Signupform = () => {
             />
           </div>
           <div className="signup-input">
-            <label for="password" className="item-font">
-              Password:{" "}
+            <label htmlFor="password" className="item-font">
+              Password:
             </label>
           </div>
           <div className="signup-input-box">
@@ -67,7 +67,7 @@ export const Signupform = () => {
           </div>
 
           <div className="signup-input">
-            <label for="password" className="item-font">
+            <label htmlFor="password" className="item-font">
               Confirm Password:{" "}
             </label>
           </div>
@@ -83,8 +83,7 @@ export const Signupform = () => {
 
           <div className="signup-input">
             <input type="checkbox" id="remember-me" />
-            <label for="remember-me" className="item-font">
-              {" "}
+            <label htmlFor="remember-me" className="item-font">
               I accept all Terms & Condition.
             </label>
           </div>

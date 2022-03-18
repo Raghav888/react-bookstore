@@ -3,7 +3,7 @@ import React from "react";
 import "./product.css";
 
 export const Products = () => {
-  const { productListstate } = useProductList();
+  const { filterDataPrice } = useProductList();
   return (
     <div className="product-page">
       <div className="product-page-title">
@@ -11,7 +11,7 @@ export const Products = () => {
       </div>
       {/* <!-- Listing --> */}
       <div className="book-card-holder">
-        {productListstate.productList.map(
+        {filterDataPrice.map(
           ({
             _id,
             title,
@@ -19,11 +19,12 @@ export const Products = () => {
             productImage,
             discountprice,
             orginalPrice,
+            rating,
           }) => {
             return (
-              <div className="mantra-vertical-card card-holder">
-                <div class="mantra-icon mantra-close-icon">
-                  <i class="fas fa-heart-circle icon-size"></i>
+              <div key={_id} className="mantra-vertical-card card-holder">
+                <div className="mantra-icon mantra-close-icon">
+                  <i className="fas fa-heart-circle icon-size"></i>
                   {/* <i class="fas fa-heart-circle" id="wishlist"></i> */}
                 </div>
 
@@ -43,9 +44,17 @@ export const Products = () => {
                         Rs.{discountprice}
                       </span>
                       <span className="mantra-original">Rs.{orginalPrice}</span>
+                      <div className="rating-color item-font mantra-icon">
+                        {rating}
+                        <i
+                          className="fa fa-star icon-font"
+                          aria-hidden="true"
+                        ></i>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="mantra-card-btn button-add">
                   <button className="mantra-button mantra-primary-btn ">
                     Add to cart

@@ -1,25 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCategory } from "../../context/category-context";
+import { useProductList } from "../../context/product-listing-context";
 import "./CategoryBanner.css";
 
 export function CategoryBanner() {
   const { category } = useCategory();
-
+  const { productListdispatch } = useProductList();
+  const showCategoryBook = (name) => {
+    productListdispatch({
+      type: "CLEAR_FILTER",
+    });
+    productListdispatch({
+      type: "CATEGORY_FILTER",
+      payload: { value: name },
+    });
+  };
   return (
     <div>
       <div className="product-line">
         {category.map((item) => {
           return (
             <div key={item.id} className="display-image">
-              <a href="##">
+              <Link
+                to="productlist"
+                onClick={() => showCategoryBook(item.categoryName)}
+              >
                 <img
                   className="book-type"
                   src={item.categoryImage}
                   alt="love-story"
                 />
                 <div className="centered">{item.categoryName}</div>
-              </a>
+              </Link>
             </div>
           );
         })}

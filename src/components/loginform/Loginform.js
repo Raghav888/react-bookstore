@@ -11,7 +11,7 @@ export const LoginForm = () => {
         </div>
         <form className="login-form" action="submit">
           <div className="login-input">
-            <label className="item-font" for="email">
+            <label className="item-font" htmlFor="email">
               Email Id:
             </label>
             <input
@@ -23,7 +23,7 @@ export const LoginForm = () => {
             />
           </div>
           <div className="login-input">
-            <label className="item-font" for="password">
+            <label className="item-font" htmlFor="password">
               Password:
             </label>
             <input
@@ -36,7 +36,7 @@ export const LoginForm = () => {
           </div>
           <div className="login-input-box">
             <input type="checkbox" id="remember-me" />
-            <label for="remember-me" className="item-font">
+            <label htmlFor="remember-me" className="item-font">
               Remember me
             </label>
             <div className="forgot-password item-font"> Forgot password</div>
