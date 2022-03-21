@@ -45,7 +45,24 @@ export const productListReducer = (state, action) => {
         );
         return { ...state, categoryFilter: newCategory };
       }
-
+    case "CART_UPDATE":
+      return {
+        ...state,
+        productList: state.productList.map((item) =>
+          item._id === action.payload.value
+            ? { ...item, cartAdded: !item.cartAdded }
+            : item
+        ),
+      };
+    case "WISHLIST_UPDATE":
+      return {
+        ...state,
+        productList: state.productList.map((item) =>
+          item._id === action.payload.value
+            ? { ...item, wishlistAdded: !item.wishlistAdded }
+            : item
+        ),
+      };
     default:
       return state;
   }

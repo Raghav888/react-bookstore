@@ -1,9 +1,79 @@
 import { useProductList } from "../../context/product-listing-context";
 import React from "react";
 import "./product.css";
+import { useCart } from "../../context/cart-context";
+import { Link } from "react-router-dom";
+import { useWishlist } from "../../context/wishlist-context";
 
 export const Products = () => {
-  const { filterDataPrice } = useProductList();
+  const { filterDataPrice, productListdispatch } = useProductList();
+  const { cartDispatch } = useCart();
+  const { wishlistDispatch } = useWishlist();
+
+  const addtoCart = (
+    _id,
+    title,
+    author,
+    productImage,
+    discountprice,
+    orginalPrice
+  ) => {
+    cartDispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        value: {
+          _id,
+          title,
+          author,
+          productImage,
+          discountprice,
+          orginalPrice,
+          qty: 1,
+          totalPrice: discountprice,
+        },
+      },
+    });
+    productListdispatch({ type: "CART_UPDATE", payload: { value: _id } });
+  };
+
+  const addtoWishlist = (
+    _id,
+    title,
+    author,
+    productImage,
+    discountprice,
+    orginalPrice,
+    rating,
+    cartAdded
+  ) => {
+    wishlistDispatch({
+      type: "ADD_TO_WISHLIST",
+      payload: {
+        value: {
+          _id,
+          title,
+          author,
+          productImage,
+          discountprice,
+          orginalPrice,
+          rating,
+          cartAdded,
+        },
+      },
+    });
+
+    productListdispatch({ type: "WISHLIST_UPDATE", payload: { value: _id } });
+  };
+
+  const removefromWishlist = (_id) => {
+    productListdispatch({ type: "WISHLIST_UPDATE", payload: { value: _id } });
+    wishlistDispatch({
+      type: "REMOVE_FROM_WISHLIST",
+      payload: {
+        value: _id,
+      },
+    });
+  };
   return (
     <div className="product-page">
       <div className="product-page-title">
@@ -20,12 +90,35 @@ export const Products = () => {
             discountprice,
             orginalPrice,
             rating,
+            cartAdded,
+            wishlistAdded,
           }) => {
             return (
               <div key={_id} className="mantra-vertical-card card-holder">
                 <div className="mantra-icon mantra-close-icon">
-                  <i className="fas fa-heart-circle icon-size"></i>
-                  {/* <i class="fas fa-heart-circle" id="wishlist"></i> */}
+                  {wishlistAdded ? (
+                    <i
+                      className="fas fa-heart-circle icon-size"
+                      id="wishlist"
+                      onClick={() => removefromWishlist(_id)}
+                    ></i>
+                  ) : (
+                    <i
+                      className="fas fa-heart-circle icon-size"
+                      onClick={() =>
+                        addtoWishlist(
+                          _id,
+                          title,
+                          author,
+                          productImage,
+                          discountprice,
+                          orginalPrice,
+                          rating,
+                          cartAdded
+                        )
+                      }
+                    ></i>
+                  )}
                 </div>
 
                 <div className="mantra-card-holder-image-v">
@@ -54,12 +147,33 @@ export const Products = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="mantra-card-btn button-add">
-                  <button className="mantra-button mantra-primary-btn ">
-                    Add to cart
-                  </button>
-                </div>
+                {cartAdded ? (
+                  <div className="mantra-card-btn button-add">
+                    <Link to="/cart">
+                      <button className="mantra-button mantra-primary-btn">
+                        Go to Cart
+                      </button>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="mantra-card-btn button-add">
+                    <button
+                      className="mantra-button mantra-primary-btn"
+                      onClick={() =>
+                        addtoCart(
+                          _id,
+                          title,
+                          author,
+                          productImage,
+                          discountprice,
+                          orginalPrice
+                        )
+                      }
+                    >
+                      Add to cart
+                    </button>
+                  </div>
+                )}
               </div>
             );
           }
