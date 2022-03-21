@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../../../context/cart-context";
+import { useWishlist } from "../../../context/wishlist-context";
 import "./navbar.css";
 export function Navbar() {
+  const { cartState } = useCart();
+  const { wishlistState } = useWishlist();
+
   return (
     <nav className="mantra-nav head-nav nav-main">
       <div className="mantra-nav-title">
@@ -28,22 +33,40 @@ export function Navbar() {
         </Link>
 
         <div className="mantra-badge">
-          <a className="mantra-menu-icon" href="./Html/wishlist.html">
-            <span className="mantra-icon">
-              <i className="fa fa-heart"></i>
-              <span className="mantra-count">5</span>
-            </span>
-          </a>
+          {wishlistState.wishlistcount > 0 ? (
+            <Link className="mantra-menu-icon" to="/wishlist">
+              <span className="mantra-icon">
+                <i className="fa fa-heart"></i>
+                <span className="mantra-count">
+                  {wishlistState.wishlistcount}
+                </span>
+              </span>
+            </Link>
+          ) : (
+            <Link className="mantra-menu-icon" to="/wishlist">
+              <span className="mantra-icon">
+                <i className="fa fa-heart"></i>
+              </span>
+            </Link>
+          )}
         </div>
         <div className="mantra-badge">
-          <a className="mantra-menu-icon" href="./Html/cart.html">
-            <span className="mantra-icon">
-              <i className="fa fa-shopping-cart"></i>
-              <span className="mantra-count">1</span>
-            </span>
-
-            <span className="mantra-cart-button cart-button">Cart</span>
-          </a>
+          {cartState.cartcount > 0 ? (
+            <Link className="mantra-menu-icon" to="/cart">
+              <span className="mantra-icon">
+                <i className="fa fa-shopping-cart"></i>
+                <span className="mantra-count">{cartState.cartcount}</span>
+              </span>
+              <span className="mantra-cart-button cart-button">Cart</span>
+            </Link>
+          ) : (
+            <Link className="mantra-menu-icon" to="/cart">
+              <span className="mantra-icon">
+                <i className="fa fa-shopping-cart"></i>
+              </span>
+              <span className="mantra-cart-button cart-button">Cart</span>
+            </Link>
+          )}
         </div>
       </div>
     </nav>
