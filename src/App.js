@@ -6,6 +6,7 @@ import { Home } from "./pages/landing/Home";
 import { ProductListing } from "./pages/productListing/ProductListing";
 import { Login } from "./pages/login/Login";
 import { Signup } from "./pages/signup/Signup";
+import { Cart } from "./pages/cart/Cart";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/mockman" element={<MockMan />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );

@@ -14,6 +14,16 @@ export const wishlistReducer = (state, action) => {
         ),
         wishlistcount: state.wishlistcount - 1,
       };
+
+    case "CART_IS_UPDATED":
+      return {
+        ...state,
+        wishlistData: state.wishlistData.map((item) =>
+          item._id === action.payload.value
+            ? { ...item, cartAdded: !item.cartAdded }
+            : item
+        ),
+      };
     default:
       return state;
   }
