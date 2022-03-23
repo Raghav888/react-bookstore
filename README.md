@@ -1,1 +1,1 @@
-React E-commerce App BookStore
+React E-commerce App: BookStore
