@@ -8,15 +8,17 @@ import { useWishlist } from "../../context/wishlist-context";
 export const Products = () => {
   const { filterDataPrice, productListdispatch } = useProductList();
   const { cartDispatch } = useCart();
-  const { wishlistDispatch } = useWishlist();
-
+  const { wishlistState, wishlistDispatch } = useWishlist();
+  const exists = (id) =>
+    wishlistState.wishlistData.findIndex((obj) => obj._id === id);
   const addtoCart = (
     _id,
     title,
     author,
     productImage,
     discountprice,
-    orginalPrice
+    orginalPrice,
+    rating
   ) => {
     cartDispatch({
       type: "ADD_TO_CART",
@@ -29,11 +31,17 @@ export const Products = () => {
           discountprice,
           orginalPrice,
           qty: 1,
-          totalPrice: discountprice,
+          rating,
+          totalPrice: orginalPrice,
         },
       },
     });
     productListdispatch({ type: "CART_UPDATE", payload: { value: _id } });
+
+    let itemIndex = exists(_id);
+    if (itemIndex !== -1) {
+      wishlistDispatch({ type: "CART_IS_UPDATED", payload: { value: _id } });
+    }
   };
 
   const addtoWishlist = (
@@ -166,7 +174,8 @@ export const Products = () => {
                           author,
                           productImage,
                           discountprice,
-                          orginalPrice
+                          orginalPrice,
+                          rating
                         )
                       }
                     >
