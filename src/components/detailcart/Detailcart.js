@@ -8,7 +8,7 @@ export const Detailcart = () => {
   const { cartState, cartDispatch } = useCart();
   const { productListdispatch } = useProductList();
   const { wishlistState, wishlistDispatch } = useWishlist();
-
+  console.log(cartState.cartData);
   const exists = (id) =>
     wishlistState.wishlistData.findIndex((obj) => obj._id === id);
   const totalCostCal = () => {
@@ -28,10 +28,11 @@ export const Detailcart = () => {
       type: "REMOVE_FROM_CART",
       payload: { value: id },
     });
-    console.log("remove from cart called");
+
     productListdispatch({ type: "CART_UPDATE", payload: { value: id } });
 
     let itemIndex = exists(id);
+
     if (itemIndex !== -1) {
       wishlistDispatch({ type: "CART_IS_UPDATED", payload: { value: id } });
     }
@@ -82,8 +83,30 @@ export const Detailcart = () => {
         type: "REDUCE_QUANTITY",
         payload: { value: id },
       });
+      let itemIndex = exists(id);
+      if (itemIndex !== -1) {
+        wishlistDispatch({
+          type: "REDUCE_QUANTITY",
+          payload: { value: id },
+        });
+      }
     } else {
       removeFromCart(id);
+    }
+  };
+
+  const increaseQuantity = (id) => {
+    cartDispatch({
+      type: "INCREASE_QUANTITY",
+      payload: { value: id },
+    });
+
+    let itemIndex = exists(id);
+    if (itemIndex !== -1) {
+      wishlistDispatch({
+        type: "INCREASE_QUANTITY",
+        payload: { value: id },
+      });
     }
   };
 
@@ -153,12 +176,7 @@ export const Detailcart = () => {
                             className="mantra-button mantra-primary-btn circle"
                             data-quantity="plus"
                             data-field="quantity"
-                            onClick={() =>
-                              cartDispatch({
-                                type: "INCREASE_QUANTITY",
-                                payload: { value: _id },
-                              })
-                            }
+                            onClick={() => increaseQuantity(_id)}
                           >
                             <i className="fa fa-plus" aria-hidden="true"></i>
                           </button>

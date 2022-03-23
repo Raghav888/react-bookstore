@@ -9,7 +9,7 @@ const WishlistProvider = ({ children }) => {
     wishlistData: [],
     wishlistcount: 0,
   });
-  console.log(wishlistState);
+  console.log(wishlistState.wishlistData);
   return (
     <WishlistContext.Provider value={{ wishlistState, wishlistDispatch }}>
       {children}

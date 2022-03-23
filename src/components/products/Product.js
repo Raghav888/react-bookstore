@@ -7,10 +7,13 @@ import { useWishlist } from "../../context/wishlist-context";
 
 export const Products = () => {
   const { filterDataPrice, productListdispatch } = useProductList();
-  const { cartDispatch } = useCart();
+  const { cartState, cartDispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
   const exists = (id) =>
     wishlistState.wishlistData.findIndex((obj) => obj._id === id);
+
+  const existsinCart = (id) =>
+    cartState.cartData.findIndex((obj) => obj._id === id);
   const addtoCart = (
     _id,
     title,
@@ -54,21 +57,41 @@ export const Products = () => {
     rating,
     cartAdded
   ) => {
-    wishlistDispatch({
-      type: "ADD_TO_WISHLIST",
-      payload: {
-        value: {
-          _id,
-          title,
-          author,
-          productImage,
-          discountprice,
-          orginalPrice,
-          rating,
-          cartAdded,
+    const itemindex = existsinCart(_id);
+    if (itemindex !== -1) {
+      wishlistDispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: {
+          value: {
+            _id,
+            title,
+            author,
+            productImage,
+            discountprice,
+            orginalPrice,
+            rating,
+            cartAdded,
+            qty: 1,
+          },
         },
-      },
-    });
+      });
+    } else {
+      wishlistDispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: {
+          value: {
+            _id,
+            title,
+            author,
+            productImage,
+            discountprice,
+            orginalPrice,
+            rating,
+            cartAdded,
+          },
+        },
+      });
+    }
 
     productListdispatch({ type: "WISHLIST_UPDATE", payload: { value: _id } });
   };
