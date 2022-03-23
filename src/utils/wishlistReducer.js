@@ -20,7 +20,32 @@ export const wishlistReducer = (state, action) => {
         ...state,
         wishlistData: state.wishlistData.map((item) =>
           item._id === action.payload.value
-            ? { ...item, cartAdded: !item.cartAdded }
+            ? { ...item, qty: 1, cartAdded: !item.cartAdded }
+            : item
+        ),
+      };
+
+    case "INCREASE_QUANTITY":
+      return {
+        ...state,
+        wishlistData: state.wishlistData.map((item) =>
+          item._id === action.payload.value
+            ? {
+                ...item,
+                qty: item.qty + 1,
+              }
+            : item
+        ),
+      };
+    case "REDUCE_QUANTITY":
+      return {
+        ...state,
+        wishlistData: state.wishlistData.map((item) =>
+          item._id === action.payload.value
+            ? {
+                ...item,
+                qty: item.qty - 1,
+              }
             : item
         ),
       };
